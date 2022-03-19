@@ -18,6 +18,10 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/register.html");
 });
 
+app.get("/login", (request, response) => {
+  response.render("login.html");
+});
+
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
