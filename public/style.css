@@ -2,9 +2,10 @@
 
 #login-box {
     position: absolute;
-    margin: auto;
-    width: 280px;
-    height: 510px;
+    margin-top: 100px;
+    margin-left: 600px;
+    width: 320px;
+    height: 490px;
     background: rgb(120, 235, 255);
     border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -20,7 +21,7 @@ h1 {
 
 img {
     margin: auto;
-    margin-left: 80px;
+    margin-left: 100px;
     width: 120px;
     height: 60px;
 }
@@ -35,7 +36,7 @@ h2 {
 
 p {
     margin: auto;
-    margin-left: 50px;
+    margin-left: 70px;
     font-size: 12px;
 }
 
@@ -65,6 +66,7 @@ input[type="password"]:focus {
 }
 
 a:link {
+  margin: 55px;
   color: blue;
   background-color: transparent;
   text-decoration: none;
@@ -99,7 +101,7 @@ form {
 }
 
 input[type="submit"] {
-    margin-left: 50px;
+    margin-left: 70px;
     margin-top: 28px;
     padding: 4px;
     width: 180px;
