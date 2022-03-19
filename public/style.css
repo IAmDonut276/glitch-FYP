@@ -107,6 +107,20 @@ input[type="button"] {
     cursor: pointer;
 }
 
+a:link {
+  margin-left: -90px;
+  color: blue;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+a:hover {
+  color: green;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 input[type="button"]:hover,
 input[type="button"]:focus {
     opacity: 0.8;
