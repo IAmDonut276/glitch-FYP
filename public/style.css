@@ -33,9 +33,9 @@ h2 {
     font-size: 15px;
 }
 
-p {
-    margin: auto;
-    text-align: left;
+a {
+    margin: 50px;
+    text-align: center;
     font-size: 12px;
 }
 
@@ -215,15 +215,15 @@ input[type="button"]:focus {
     transition: 0.1s ease;
 }
 
-a:link {
-  margin-left: -90px;
+p1:link {
+  margin-left:auto;
   color: blue;
   background-color: transparent;
   text-decoration: none;
   font-size: 12px;
 }
 
-a:hover {
+p1:hover {
   color: green;
   background-color: transparent;
   text-decoration: underline;
