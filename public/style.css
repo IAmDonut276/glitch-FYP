@@ -1,4 +1,4 @@
-/* this file is loaded by index.html and styles the page */
+/*Connection.html*/
 
 * {
   box-sizing: border-box;
@@ -11,11 +11,12 @@ body {
 }
 
 h1 {
-  font-style: italic;
-  color: #373fff;
-  max-width: calc(100% - 5rem);
-  line-height: 1.1;
-}
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+  }
 
 form {
   background-color: #eeeeee;
@@ -56,6 +57,17 @@ button:focus {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     transition: 0.1s ease;
 }
+
+
+#connect-box {
+    position: absolute;
+    margin-top: 70px;
+    width: 600px;
+    height: 350px;
+    background: rgb(120, 235, 255);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
 
 input[type="button"] {
     position: absolute;
