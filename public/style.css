@@ -38,11 +38,81 @@ form {
   }
 
 p1 {
-    margin: 50px;
+    margin: 100px;
     text-align: center;
     font-size: 12px;
 }
 
+input[type="text1"]{
+    display: block;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    padding: 4px;
+    width: 400px;
+    height: 32px;
+    border: 10px;
+    border-bottom: 1px solid #AAAAAA;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+input[type="text1"]:focus{
+    border-bottom: 2px solid #16a085;
+    color: #16a085;
+    transition: 0.2s ease;
+}
+
+button[id="connect"]{
+    margin-left: 200px;
+    margin-top: 28px;
+    padding: 4px;
+    width: 180px;
+    height: 32px;
+    background: #16a085;
+    border: none;
+    border-radius: 2px;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    transition: 0.1s ease;
+    cursor: pointer;
+}
+
+button[id="connect"]:hover,
+button[id="connect"]:focus {
+    opacity: 0.8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
+}
+
+/*logout*/
+
+input[type="button"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 32px;
+    background: #ff3d3d;
+    border: none;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    transition: 0.1s ease;
+    cursor: pointer;
+}
+
+input[type="button"]:hover,
+input[type="button"]:focus {
+    opacity: 0.8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
+}
 
 
 input[type="text"],
@@ -70,50 +140,5 @@ input[type="password"]:focus {
     transition: 0.2s ease;
 }
 
-button{
-    margin-left: 50px;
-    margin-top: 28px;
-    padding: 4px;
-    width: 180px;
-    height: 32px;
-    background: #16a085;
-    border: none;
-    border-radius: 2px;
-    color: #FFFFFF;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    transition: 0.1s ease;
-    cursor: pointer;
-}
 
-button:hover,
-button:focus {
-    opacity: 0.8;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    transition: 0.1s ease;
-}
-
-
-input[type="button"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150px;
-    height: 32px;
-    background: #ff3d3d;
-    border: none;
-    border-radius: 2px;
-    color: rgb(255, 255, 255);
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    transition: 0.1s ease;
-    cursor: pointer;
-}
-
-input[type="button"]:hover,
-input[type="button"]:focus {
-    opacity: 0.8;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    transition: 0.1s ease;
-}
 
