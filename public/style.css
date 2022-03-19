@@ -6,7 +6,6 @@
 
 body {
   font-family: sans-serif;
-  --color-text: #ffffff;
   margin: 2em 1em;
   line-height: 1.5em;
 }
@@ -35,18 +34,49 @@ input {
   width: 100%;
 }
 
-form button {
-  background-color: #bbbbf2;
-  border: 2px solid currentColor;
-  border-radius: .25em;
-  cursor: pointer;
-  font-size: inherit;
-  line-height: 1.4em;
-  padding: 0.25em 1em;
-  max-width: 20ch;
+button{
+    margin-left: 50px;
+    margin-top: 28px;
+    padding: 4px;
+    width: 180px;
+    height: 32px;
+    background: #16a085;
+    border: none;
+    border-radius: 2px;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    transition: 0.1s ease;
+    cursor: pointer;
 }
 
-form button:hover {
-  background-color: lavender;
+button:hover,
+button:focus {
+    opacity: 0.8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
+}
+
+input[type="button"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 32px;
+    background: #ff3d3d;
+    border: none;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    transition: 0.1s ease;
+    cursor: pointer;
+}
+
+input[type="button"]:hover,
+input[type="button"]:focus {
+    opacity: 0.8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
 }
 
