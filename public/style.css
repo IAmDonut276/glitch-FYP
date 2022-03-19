@@ -26,13 +26,48 @@ form {
   max-width: 40ch;
 }
 
-input {
-  border: 1px solid silver;
-  display: block;
-  font-size: 16px;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
+#connect-box {
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 470px;
+    width: 600px;
+    height: 350px;
+    background: rgb(120, 235, 255);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+p1 {
+    margin: 50px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+
+input[type="text"],
+input[type="password"] {
+    display: block;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    padding: 4px;
+    width: 180px;
+    height: 32px;
+    border: 10px;
+    border-bottom: 1px solid #AAAAAA;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid #16a085;
+    color: #16a085;
+    transition: 0.2s ease;
 }
 
 button{
@@ -58,16 +93,6 @@ button:focus {
     transition: 0.1s ease;
 }
 
-
-#connect-box {
-    position: absolute;
-    margin-top: 70px;
-    width: 600px;
-    height: 350px;
-    background: rgb(120, 235, 255);
-    border-radius: 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  }
 
 input[type="button"] {
     position: absolute;
