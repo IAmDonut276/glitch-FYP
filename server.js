@@ -16,11 +16,9 @@ app.use(express.static("public"));
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/register.html");
+  response.sendFile(__dirname + "/views/login.html");
 });
 
-app.get("/login", (request, response) => {
-  response.render("login.html");
-});
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
