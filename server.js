@@ -27,7 +27,6 @@ app.get("/", (request, response) => {
 
 //TODO: then do another one for register, you want want to learn a bit about GET and POST
 
-
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
@@ -36,7 +35,7 @@ const listener = app.listen(process.env.PORT, () => {
 // peerjs server
 const peerServer = ExpressPeerServer(listener, {
   debug: true,
-  path: '/myapp'
+  path: "/myapp",
 });
 
-app.use('/peerjs', peerServer);
+app.use("/peerjs", peerServer);
