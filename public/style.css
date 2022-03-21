@@ -1,5 +1,5 @@
 
-.hero.is-fullheight{
+.hero.is-primary.is-fullheight{
   background-image: url(https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/3338813.jpg?v=1647716056266);
   background-position: center;
   background-repeat:  no-repeat;
@@ -10,8 +10,8 @@
 
 /*login.html*/
 
-.container.has-text-centered {
-    position: center;
+.container.has-text-centered{
+    margin-top: auto;
     background: rgb(120, 235, 255);
     border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
