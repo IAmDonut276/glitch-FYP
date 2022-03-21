@@ -25,9 +25,10 @@ h1 {
     font-size: 20px;
   }
 
-.image.is-5by3{
-  justify-content: center;
-  background-image: url(https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/logo.jpg?v=1647716057183);
+img {
+    margin: auto;
+    width: 120px;
+    height: 60px;
 }
 
 h2 {
@@ -40,7 +41,6 @@ h2 {
 
 p {
     margin: auto;
-    margin-left: 70px;
     font-size: 12px;
 }
 
@@ -70,7 +70,6 @@ input[type="password"]:focus {
 }
 
 a:link {
-  margin: 55px;
   color: blue;
   background-color: transparent;
   text-decoration: none;
@@ -105,7 +104,6 @@ form {
 }
 
 input[type="submit"] {
-    margin-left: 70px;
     margin-top: 28px;
     padding: 4px;
     width: 180px;
