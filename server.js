@@ -15,7 +15,7 @@ app.use(express.static("public"));
 
 // https://expressjs.com/en/starter/basic-routing.html
 // TODO: You better put back the index.html here, else people see nothing when they go to your app
-app.get("/register", (request, response) => {
+app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/register.html");
 });
 
