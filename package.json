@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "peer": "^0.5.3"
+    "peer": "^0.5.3",
+    "bulma": "^0.9.3"
   },
   "engines": {
     "node": "12.x"

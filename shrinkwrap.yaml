@@ -1,4 +1,5 @@
 dependencies:
+  bulma: 0.9.3
   express: 4.17.1
   peer: 0.5.3
 packages:
@@ -116,6 +117,10 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
+  /bulma/0.9.3:
+    dev: false
+    resolution:
+      integrity: sha512-0d7GNW1PY4ud8TWxdNcP6Cc8Bu7MxcntD/RRLGWuiw/s0a9P+XlH/6QoOIrmbj6o8WWJzJYhytiu9nFjTszk1g==
   /bytes/3.1.0:
     dev: false
     engines:
@@ -694,5 +699,6 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
+  bulma: ^0.9.3
   express: ^4.17.1
   peer: ^0.5.3
