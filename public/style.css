@@ -10,12 +10,8 @@
 
 /*login.html*/
 
-#login-box {
-    position: absolute;
-    margin-top: 100px;
-    margin-left: 600px;
-    width: 320px;
-    height: 490px;
+.container.is-fluid {
+    position: center;
     background: rgb(120, 235, 255);
     border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
