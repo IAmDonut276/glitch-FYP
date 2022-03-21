@@ -1,3 +1,8 @@
+.image.is-fullwidth{
+  margin: 0;
+  margin-left:0;
+}
+
 /*login.html*/
 
 #login-box {
