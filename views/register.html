@@ -1,54 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
 
     <title>Register</title>
 
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css" />
 
     <!-- import libraries -->
     <script src="/lib/peerjs.js"></script>
-    
+
     <!-- import the webpage's client-side javascript file -->
     <script src="/register.js" type="module"></script>
   </head>
-  
 
-<section class="hero is-fullheight">
-  <div class="hero-body has-text-centered">
-    <div class = "container is-max-desktop">
-    <div class="columns is-mobile">
-    <div class="column is-half is-offset-one-quarter">
+  <section class="hero is-fullheight">
+    <div class="hero-body has-text-centered">
+      <div class="container is-max-desktop">
+        <div class="columns is-mobile">
+          <div class="column is-half is-offset-one-quarter">
+            <h1>Register</h1>
 
-        <h1>Register</h1>
+            <img
+              src="https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/logo.jpg?v=1647716057183"
+            />
 
-        <img src="https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/logo.jpg?v=1647716057183"/>
-          
-        <h2>WELCOME</h2>
-        <p>Username</p>
-        <input class="input" type="text" id="username" name="username" placeholder="Enter an Username" />
-        <p>E-mail</p>
-        <input class="input" type="text" id="email" name="email" placeholder="Enter an E-mail" />
-        <p>Password</p>
-        <input class="input" type="password" id="password" name="password" placeholder="Enter a Password" />
-        <p>Pin</p>
-        <input class="input" type="password" id="pin" name="pin" placeholder="Enter a Pin" />
-        <input class="button is-primary" type="submit" id="signUp" name="signup_submit" value="Register" /><br>
-  
-        <a class="has-text-link" href="/login">Already have an account? Login Here</a>
-          
+            <h2>WELCOME</h2>
+            <p>Username</p>
+            <input
+              class="input"
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter an Username"
+            />
+            <p>E-mail</p>
+            <input
+              class="input"
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Enter an E-mail"
+            />
+            <p>Password</p>
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter a Password"
+            />
+            <p>Pin</p>
+            <input
+              class="input"
+              type="password"
+              id="pin"
+              name="pin"
+              placeholder="Enter a Pin"
+            />
+            <input
+              class="button is-primary"
+              type="submit"
+              id="signUp"
+              name="signup_submit"
+              value="Register"
+            /><br />
+
+            <a class="has-text-link" href="/login"
+              >Already have an account? Login Here</a
+            >
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-
-
-</section>
-
+  </section>
 </html>
