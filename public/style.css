@@ -10,7 +10,7 @@
 
 /*login.html*/
 
-.container.is-fluid {
+.container.has-text-centered {
     position: center;
     background: rgb(120, 235, 255);
     border-radius: 2px;
