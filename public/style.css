@@ -72,14 +72,12 @@ input[type="password"]:focus {
 }
 
 a:link {
-  color: blue;
   background-color: transparent;
   text-decoration: none;
   font-size: 12px;
 }
 
 a:hover {
-  color: green;
   background-color: transparent;
   text-decoration: underline;
 }
