@@ -24,12 +24,8 @@ h1 {
     text-align: center;
     font-size: 20px;
   }
-
-img {
-    margin: auto;
-    margin-left: 100px;
-    width: 120px;
-    height: 60px;
+.media-center{
+  background-image: url(https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/logo.jpg?v=1647716057183);
 }
 
 h2 {
