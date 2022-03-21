@@ -13,7 +13,6 @@
 .container.has-text-centered{
     margin-top: auto;
     background: rgb(120, 235, 255);
-    border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   }
 
