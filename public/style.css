@@ -10,8 +10,8 @@
 
 /*login.html*/
 
-.container.has-text-centered.is-fluid{
-    width: ;
+.container.is-max-desktop{
+    dimension: $container-offset(2 * $gap);
     background: rgb(120, 235, 255);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   }
