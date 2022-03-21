@@ -10,7 +10,7 @@
 
 /*login.html*/
 
-.container.has-text-centered.is-fluid.is-vcentered{
+.container.has-text-centered.is-fluid{
     background: rgb(120, 235, 255);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   }
