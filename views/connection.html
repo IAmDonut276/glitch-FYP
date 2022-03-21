@@ -1,11 +1,11 @@
- <!-- This is a static file -->
+<!-- This is a static file -->
 <!-- served from your routes in server.js -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
@@ -14,45 +14,55 @@
     <title>Connection</title>
 
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css" />
 
     <!-- import libraries -->
     <script src="/lib/peerjs.js"></script>
-    
+
     <!-- import the webpage's client-side javascript file -->
     <script src="/connection.js" type="module"></script>
   </head>
-  
-  <section class="hero is-fullheight">
 
-    
-    <div>
-    <input class="button is-danger" type="button" id="logout" name="logout_submit" value="Log Out" />
-    </div>
-    
-    <video class="remote-video" autoplay></video> 
-    
+  <section class="hero is-fullheight">
+    <input
+        class="button is-danger"
+        type="button"
+        id="logout"
+        name="logout_submit"
+        value="Log Out"
+      />
     <div class="hero-body has-text-centered">
+    <div>
+
+    </div>
+
+    <video class="remote-video" autoplay></video>
+
       <div class="container is-max-desktop">
         <div class="columns is-mobile">
           <div class="column is-half is-offset-one-quarter">
+            <h1>Connect to your CCTV</h1>
 
-    <h1> Connect to your CCTV</h1>
+            <p1>CCTV ID</p1>
+            <input
+              type="text1"
+              id="connect-to-peer"
+              placeholder="Enter CCTV ID"
+            />
+            <button
+              class="button is-primary"
+              id="connect"
+              onclick="connectToPeer()"
+            >
+              Connect</button
+            ><br />
 
-    <p1>CCTV ID</p1>
-    <input type="text1" id="connect-to-peer" placeholder="Enter CCTV ID"/>
-    <button class="button is-primary" id="connect" onclick="connectToPeer()">
-      Connect
-    </button><br>
+            <a href="changepin.html">Change Pin Here</a>
 
-    <a href="changepin.html">Change Pin Here</a>
-      
-    <div style="color:#ffffff" class="messages">
-      
-    </div>
+            <div style="color: #ffffff" class="messages"></div>
+          </div>
+        </div>
       </div>
     </div>
-        <
   </section>
-
 </html>

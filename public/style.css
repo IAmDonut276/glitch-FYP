@@ -126,17 +126,6 @@ input[type="submit"]:active {
   transition: 0.1s ease;
 }
 
-#connect-box {
-  position: absolute;
-  margin-top: 200px;
-  margin-left: 470px;
-  width: 600px;
-  height: 350px;
-  background: rgb(120, 235, 255);
-  border-radius: 2px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
 p1 {
   margin: 55px;
   text-align: center;
@@ -167,8 +156,6 @@ input[type="text1"]:focus {
 }
 
 button[id="connect"] {
-  margin-left: 200px;
-  margin-top: 28px;
   padding: 4px;
   width: 180px;
   height: 32px;
@@ -192,9 +179,6 @@ button[id="connect"]:focus {
 /*logout*/
 
 input[type="button"] {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 150px;
   height: 32px;
   background: #ff3d3d;
