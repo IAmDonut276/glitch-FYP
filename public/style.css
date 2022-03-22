@@ -148,9 +148,10 @@ input[type="text1"]:focus {
   transition: 0.2s ease;
 }
 
-button[id="connect"] {
+input[id="connect"],
+input[id="change"] {
   padding: 4px;
-  margin: auto;
+  margin-top: 28px;
   background: #16a085;
   border: none;
   border-radius: 2px;
@@ -161,8 +162,10 @@ button[id="connect"] {
   cursor: pointer;
 }
 
-button[id="connect"]:hover,
-button[id="connect"]:focus {
+input[id="connect"]:hover,
+input[id="connect"]:focus,
+input[id="change"]:hover,
+input[id="change"]:focus {
   opacity: 0.8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;

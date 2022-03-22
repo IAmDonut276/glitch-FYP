@@ -11,16 +11,11 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
 
-    <title>Connection</title>
+    <title>Change Pin</title>
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
 
-    <!-- import libraries -->
-    <script src="/lib/peerjs.js"></script>
-
-    <!-- import the webpage's client-side javascript file -->
-    <script src="/connection.js" type="module"></script>
   </head>
 
   <section class="hero is-fullheight">
@@ -34,39 +29,35 @@
     <div class="hero-body has-text-centered">
       <div></div>
 
-      <video class="remote-video" autoplay></video>
-
       <div class="container is-max-desktop">
         <div class="columns is-mobile">
           <div class="column is-half is-offset-one-quarter">
-            <h1>Connect to your CCTV</h1>
+            <h1>Change Your Pin</h1>
 
-            <p>CCTV ID</p>
-            <input
-              class="input is-fullwidth"
-              type="text1"
-              id="connect-to-peer"
-              placeholder="Enter CCTV ID"
-            />
-            
-            <p>Enter Pin</p>
+            <p>New Pin</p>
             <input
               class="input is-fullwidth"
               type="password"
-              id="pin"
-              placeholder="Enter your Pin"
+              id="newPin"
+              placeholder="Enter New Pin"
+            />
+            
+            <p>Re-enter Pin</p>
+            <input
+              class="input is-fullwidth"
+              type="password"
+              id="newPin2"
+              placeholder="Re-enter New Pin"
             />
 
             <input
               class="button is-primary is-responsive is-fullwidth"
-              id="connect"
-              onclick="connectToPeer()"
-              value="Connect"
+              id="change"
+              value="Change"
             /><br />
 
-            <a href="/changepin">Change Pin Here</a>
+            <a href="/connection">Connect to CCTV Here</a>
 
-            <div style="color: #ffffff" class="messages"></div>
           </div>
         </div>
       </div>

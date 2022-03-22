@@ -30,6 +30,10 @@ app.get("/connection", (request, response) => {
   response.sendFile(__dirname + "/views/connection.html");
 });
 
+app.get("/changepin", (request, response) => {
+  response.sendFile(__dirname + "/views/changepin.html");
+});
+
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
