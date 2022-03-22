@@ -67,6 +67,34 @@ input[type="password"]:focus {
   transition: 0.2s ease;
 }
 
+input[type="submit"] {
+  margin-top: 28px;
+  padding: 4px;
+  width: 180px;
+  height: 32px;
+  background: #16a085;
+  border: none;
+  border-radius: 2px;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
 a:link {
   background-color: transparent;
   text-decoration: none;
@@ -98,45 +126,10 @@ form {
   max-width: 40ch;
 }
 
-input[type="submit"] {
-  margin-top: 28px;
-  padding: 4px;
-  width: 180px;
-  height: 32px;
-  background: #16a085;
-  border: none;
-  border-radius: 2px;
-  color: #ffffff;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  transition: 0.1s ease;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover,
-input[type="submit"]:focus {
-  opacity: 0.8;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  transition: 0.1s ease;
-}
-
-input[type="submit"]:active {
-  opacity: 1;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-  transition: 0.1s ease;
-}
-
-p1 {
-  margin: 55px;
-  text-align: center;
-  font-size: 12px;
-}
-
 input[type="text1"] {
   display: block;
   box-sizing: border-box;
   margin: auto;
-  margin-top: 2px;
   margin-bottom: 4px;
   padding: 4px;
   width: 500px;
@@ -157,8 +150,7 @@ input[type="text1"]:focus {
 
 button[id="connect"] {
   padding: 4px;
-  width: 180px;
-  height: 32px;
+  margin: auto;
   background: #16a085;
   border: none;
   border-radius: 2px;
