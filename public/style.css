@@ -70,8 +70,8 @@ input[type="password"]:focus {
 input[type="submit"] {
   margin-top: 28px;
   padding: 4px;
-  width: 180px;
-  height: 32px;
+  width: auto;
+  height: auto;
   background: #16a085;
   border: none;
   border-radius: 2px;
