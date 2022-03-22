@@ -171,9 +171,34 @@ input[id="change"]:focus {
   transition: 0.1s ease;
 }
 
+/*video-connected.html*/
+input[id="sound"],
+input[id="disconnect"] {
+  padding: 4px;
+  margin-left:auto;
+  margin-top: 28px;
+  background: #16a085;
+  border: none;
+  border-radius: 2px;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[id="sound"]:hover,
+input[id="sound"]:focus,
+input[id="disconnect"]:hover,
+input[id="disconnect"]:focus {
+  opacity: 95%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
 /*logout*/
 
-input[type="button"] {
+input[id="logout"] {
   width: 150px;
   height: 32px;
   background: #ff3d3d;
@@ -186,8 +211,8 @@ input[type="button"] {
   cursor: pointer;
 }
 
-input[type="button"]:hover,
-input[type="button"]:focus {
+input[id="logout"]:hover,
+input[id="logout"]:focus {
   opacity: 0.8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;

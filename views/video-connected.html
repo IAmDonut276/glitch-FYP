@@ -1,0 +1,48 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+
+    <title>Connected</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import libraries -->
+    <script src="/lib/peerjs.js"></script>
+
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/connection.js" type="module"></script>
+  </head>
+
+  <section class="hero is-fullheight">
+    <div class="hero-body has-text-centered">
+      <div>
+
+      <video class="remote-video" autoplay></video>
+        
+            <input
+              class="button is-primary is-responsive"
+              type="button"
+              id="sound"
+              value="Alarm"
+            />
+            <input
+              class="button is-danger is-responsive"
+              type="button"
+              id="disconnect"
+              value="Disconnect"
+            />
+        
+      </div>
+    </div>
+  </section>
+</html>

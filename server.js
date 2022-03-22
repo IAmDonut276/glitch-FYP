@@ -34,6 +34,9 @@ app.get("/changepin", (request, response) => {
   response.sendFile(__dirname + "/views/changepin.html");
 });
 
+app.get("/video-connected", (request, response) => {
+  response.sendFile(__dirname + "/views/video-connected.html");
+});
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
