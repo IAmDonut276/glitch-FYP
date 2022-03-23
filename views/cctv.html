@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    
+        <title>CCTV</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- import libraries -->
+    <script src="/lib/peerjs.js"></script>
+    
+    
+  </head>
+  
+  <script type="module">
+    // This is to allow using the Peer API
+    let Peer = window.Peer;
+      
+    // , 'haiihhh.....'hahahaha
+    let peer = new Peer('123',{
+      host: '/',
+      path: '/peerjs/myapp'
+    });
+    peer.on('open', (id) => {
+      console.log('My peer ID is: ' + id);
+    });
+    peer.on('error', (error) => {
+     console.error(error);
+    });
+    
+    // Handle incoming data connection
+peer.on('connection', (conn) => {
+  console.log('incoming peer connection!');
+  conn.on('data', (data) => {
+    console.log(`received: ${data}`);
+  });
+  conn.on('open', () => {
+    conn.send('hello!');
+  });
+});
+
+// Handle incoming voice/video connection
+peer.on('call', (call) => {
+  navigator.mediaDevices.getUserMedia({video: true, audio: true})
+    .then((stream) => {
+      call.answer(stream); // Answer the call with an A/V stream.
+    
+    })
+    .catch((err) => {
+      console.error('Failed to get local stream', err);
+    });
+});
+      
+  </script>
+</html>

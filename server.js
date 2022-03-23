@@ -38,6 +38,10 @@ app.get("/video-connected", (request, response) => {
   response.sendFile(__dirname + "/views/video-connected.html");
 });
 
+app.get("/cctv", (request, response) => {
+  response.sendFile(__dirname + "/views/cctv.html");
+});
+
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);

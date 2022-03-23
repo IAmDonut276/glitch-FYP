@@ -18,31 +18,69 @@
 
     <!-- import libraries -->
     <script src="/lib/peerjs.js"></script>
-
-    <!-- import the webpage's client-side javascript file -->
-    <script src="/connection.js" type="module"></script>
   </head>
 
   <section class="hero is-fullheight">
     <div class="hero-body has-text-centered">
       <div>
+        <video id="vid" class="remote-video" autoplay></video>
 
-      <video class="remote-video" autoplay></video>
-        
-            <input
-              class="button is-primary is-responsive"
-              type="button"
-              id="sound"
-              value="Alarm"
-            />
-            <input
-              class="button is-danger is-responsive"
-              type="button"
-              id="disconnect"
-              value="Disconnect"
-            />
-        
+        <input
+          class="button is-primary is-responsive"
+          type="button"
+          id="sound"
+          value="Alarm"
+        />
+        <input
+          class="button is-danger is-responsive"
+          type="button"
+          id="disconnect"
+          value="Disconnect"
+        />
       </div>
     </div>
   </section>
+
+  <script type="module">
+    // This is to allow using the Peer API
+    let Peer = window.Peer;
+
+    const peerId = sessionStorage.getItem("peerid");
+    const videoEl = document.getElementById("vid");
+
+    let renderVideo = (stream) => {
+      videoEl.srcObject = stream;
+    };
+
+    //register peer
+    let peer = new Peer("909090-connect", {
+      host: "/",
+      path: "/peerjs/myapp",
+    });
+    peer.on("open", (id) => {
+      console.log("My peer ID is: " + id);
+      console.log(`Connecting to ${peerId}...`);
+
+      let conn = peer.connect(peerId);
+      conn.on("data", (data) => {
+        console.log(`received: ${data}`);
+      });
+
+      navigator.mediaDevices
+        .getUserMedia({ video: true, audio: true })
+        .then((stream) => {
+          let call = peer.call(peerId, stream);
+          call.on("stream", renderVideo);
+        })
+        .catch((err) => {
+          console.log("Failed to get local stream", err);
+        });
+      conn.on("open", () => {
+        conn.send("hi!");
+      });
+    });
+    peer.on("error", (error) => {
+      console.error(error);
+    });
+  </script>
 </html>
