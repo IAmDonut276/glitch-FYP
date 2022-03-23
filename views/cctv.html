@@ -8,56 +8,104 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    
-        <title>CCTV</title>
+
+    <title>CCTV</title>
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
 
     <!-- import libraries -->
     <script src="/lib/peerjs.js"></script>
-    
-    
   </head>
-  
+
+  <section class="hero is-fullheight">
+    <input
+      class="button is-danger"
+      type="button"
+      id="exit"
+      name="exit"
+      value="Exit"
+    />
+
+    <div class="hero-body has-text-centered">
+      <div class="container is-max-desktop">
+        <div class="columns is-mobile">
+          <div class="column is-half is-offset-one-quarter">
+            <h1>Set Up Your CCTV ID</h1>
+
+            <p>Enter CCTV ID</p>
+            <input
+              class="input is-fullwidth"
+              type="text"
+              id="set-id"
+              placeholder="Enter any CCTV ID"
+            />
+
+            <input
+              class="button is-primary is-responsive is-fullwidth"
+              type="submit"
+              id="set"
+              name="cctv-id"
+              value="Set"
+            /><br />
+            
+            <div style="color: #000000" id="messages"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script type="module">
     // This is to allow using the Peer API
     let Peer = window.Peer;
-      
-    // , 'haiihhh.....'hahahaha
-    let peer = new Peer('123',{
-      host: '/',
-      path: '/peerjs/myapp'
-    });
-    peer.on('open', (id) => {
-      console.log('My peer ID is: ' + id);
-    });
-    peer.on('error', (error) => {
-     console.error(error);
-    });
-    
-    // Handle incoming data connection
-peer.on('connection', (conn) => {
-  console.log('incoming peer connection!');
-  conn.on('data', (data) => {
-    console.log(`received: ${data}`);
-  });
-  conn.on('open', () => {
-    conn.send('hello!');
-  });
-});
 
-// Handle incoming voice/video connection
-peer.on('call', (call) => {
-  navigator.mediaDevices.getUserMedia({video: true, audio: true})
-    .then((stream) => {
-      call.answer(stream); // Answer the call with an A/V stream.
+    set.addEventListener("click", (e) => {
+      var customId = document.getElementById("set-id").value;
+ 
+      let logMessage = function(message){
+        document.getElementById("messages").innerHTML= message;
+      }
+      
+      let peer = new Peer(customId, {
+        host: "/",
+        path: "/peerjs/myapp",
+      });
+
+      peer.on("open", (id) => {
+        logMessage("My peer ID is: " + id);
+      });
+      peer.on("error", (error) => {
+        console.error(error);
+      });
     
-    })
-    .catch((err) => {
-      console.error('Failed to get local stream', err);
+
+    // Handle incoming data connection
+    peer.on("connection", (conn) => {
+      logMessage("Incoming peer connection!");
+      conn.on("data", (data) => {
+        logMessage(`Received: ${data}`);
+      });
+      conn.on("open", () => {
+        conn.send("Connected!");
+      });
+    });
+
+    // Handle incoming voice/video connection
+    peer.on("call", (call) => {
+      navigator.mediaDevices
+        .getUserMedia({ video: true, audio: true })
+        .then((stream) => {
+          call.answer(stream); // Answer the call with an A/V stream.
+        })
+        .catch((err) => {
+          console.error("Failed to get local stream", err);
+        });
     });
 });
-      
+    
+    exit.addEventListener("click", (e) => {
+      location.href = "/home";
+    });
   </script>
 </html>

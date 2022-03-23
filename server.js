@@ -15,7 +15,7 @@ app.use(express.static("public"));
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/register.html");
+  response.sendFile(__dirname + "/views/home.html");
 });
 
 app.get("/login", (request, response) => {
@@ -40,6 +40,10 @@ app.get("/video-connected", (request, response) => {
 
 app.get("/cctv", (request, response) => {
   response.sendFile(__dirname + "/views/cctv.html");
+});
+
+app.get("/home", (request, response) => {
+  response.sendFile(__dirname + "/views/home.html");
 });
 
 // listen for requests :)

@@ -27,7 +27,7 @@ img {
   height: 60px;
 }
 
-h2 {
+h,h2 {
   margin: auto;
   margin-top: 5px;
   margin-bottom: 12px;
@@ -196,9 +196,10 @@ input[id="disconnect"]:focus {
   transition: 0.1s ease;
 }
 
-/*logout*/
+/*logout&exit*/
 
-input[id="logout"] {
+input[id="logout"],
+input[id="exit"]{
   width: 150px;
   height: 32px;
   background: #ff3d3d;
@@ -212,7 +213,9 @@ input[id="logout"] {
 }
 
 input[id="logout"]:hover,
-input[id="logout"]:focus {
+input[id="logout"]:focus,
+input[id="exit"]:hover,
+input[id="exit"]:focus {
   opacity: 0.8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;

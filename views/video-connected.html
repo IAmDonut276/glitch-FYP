@@ -63,7 +63,7 @@
 
       let conn = peer.connect(peerId);
       conn.on("data", (data) => {
-        console.log(`received: ${data}`);
+        console.log(`Received: ${data}`);
       });
 
       navigator.mediaDevices
@@ -76,7 +76,7 @@
           console.log("Failed to get local stream", err);
         });
       conn.on("open", () => {
-        conn.send("hi!");
+        conn.send("Running..");
       });
     });
     peer.on("error", (error) => {

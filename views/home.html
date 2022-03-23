@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+
+    <title>HOME</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <section class="hero is-fullheight">
+    <div class="hero-body has-text-centered">
+      <div class="container is-max-desktop">
+        <div class="columns is-mobile">
+          <div class="column is-half is-offset-one-quarter">
+            <h> WELCOME TO</h><br />
+
+            <img
+              src="https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/logo.jpg?v=1647716057183"
+            />
+
+            <h2>Please Select Either your Device Will Be The</h2>
+
+            <input
+              class="button is-primary is-responsive is-fullwidth"
+              type="submit"
+              id="cctv"
+              name="to-cctv"
+              value="CCTV"
+            />
+
+            <br />
+            <h2>OR</h2>
+
+            <input
+              class="button is-primary is-responsive is-fullwidth"
+              type="submit"
+              id="connector"
+              name="to-login"
+              value="CONNECTOR"
+            /><br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script type="module">
+
+cctv.addEventListener("click", (e) => {
+  location.href="/cctv";
+});
+  connector.addEventListener("click", (e) => {
+  location.href="/login";
+});
+    
+  </script>
+</html>
