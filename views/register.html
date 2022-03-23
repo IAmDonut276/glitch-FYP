@@ -14,11 +14,6 @@
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
 
-    <!-- import libraries -->
-    <script src="/lib/peerjs.js"></script>
-
-    <!-- import the webpage's client-side javascript file -->
-    <script src="/register.js" type="module"></script>
   </head>
 
   <section class="hero is-fullheight">
@@ -35,7 +30,7 @@
             <h2>WELCOME</h2>
             <p>Username</p>
             <input
-              class="input"
+              class="input is-fullwidth"
               type="text"
               id="username"
               name="username"
@@ -43,7 +38,7 @@
             />
             <p>E-mail</p>
             <input
-              class="input"
+              class="input is-fullwidth"
               type="text"
               id="email"
               name="email"
@@ -51,7 +46,7 @@
             />
             <p>Password</p>
             <input
-              class="input"
+              class="input is-fullwidth"
               type="password"
               id="password"
               name="password"
@@ -59,14 +54,14 @@
             />
             <p>Pin</p>
             <input
-              class="input"
+              class="input is-fullwidth"
               type="password"
               id="pin"
               name="pin"
               placeholder="Enter a Pin"
             />
             <input
-              class="button is-primary"
+              class="button is-primary is-responsive is-fullwidth"
               type="submit"
               id="signUp"
               name="signup_submit"
@@ -81,4 +76,60 @@
       </div>
     </div>
   </section>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCA9JIebv1y1A_-7DaNPwZykXloxDmvqAM",
+      authDomain: "fyp-video-connection.firebaseapp.com",
+      databaseURL:
+        "https://fyp-video-connection-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "fyp-video-connection",
+      storageBucket: "fyp-video-connection.appspot.com",
+      messagingSenderId: "407561155244",
+      appId: "1:407561155244:web:68c55c49b956b590076509",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+    signUp.addEventListener("click", (e) => {
+      var Email = document.getElementById("email").value;
+      var Password = document.getElementById("password").value;
+      var Username = document.getElementById("username").value;
+      var Pin = document.getElementById("pin").value;
+
+      createUserWithEmailAndPassword(auth, Email, Password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+
+          set(ref(database, "users/" + user.uid), {
+            username: Username,
+            email: Email,
+            pin: Pin,
+          });
+
+          alert("User Added Succesfully!");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          alert(errorMessage);
+          // ..
+        });
+    });
+    
+  </script>
 </html>
