@@ -72,6 +72,7 @@
       ref,
       child,
       get,
+      update
     } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
     import {
       getAuth,
@@ -130,7 +131,7 @@ onAuthStateChanged(auth, (user) => {
       if (newPin.length != 0) {
         if (newPin == confirm) {
           alert("Pin match");
-          set(ref(database, "users/" +uid), {
+          update(ref(database, "users/" +uid), {
             pin: newPin
           })
             .then(() => {
