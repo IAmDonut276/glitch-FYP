@@ -23,26 +23,64 @@
   <section class="hero is-fullheight">
     <div class="hero-body has-text-centered">
       <div>
-        <video id="vid" class="remote-video" autoplay></video>
+        
 
-        <input
-          class="button is-primary is-responsive"
-          type="button"
-          id="sound"
-          value="Alarm"
-        />
-        <input
-          class="button is-danger is-responsive"
-          type="button"
-          id="disconnect"
-          value="Disconnect"
-        />
+            <div class="container is-primary is-max-desktop is-fluid">
+
+              <video id="vid" class="remote-video" autoplay></video>
+            </div>
+ 
+
+            <input
+              class="button is-primary is-responsive"
+              type="button"
+              id="sound"
+              value="Alarm"
+            />
+            <input
+              class="button is-danger is-responsive"
+              type="button"
+              id="disconnect"
+              onclick="disconnect()"
+              value="Disconnect"
+            />
+
       </div>
     </div>
   </section>
 
   <script type="module">
-    // This is to allow using the Peer API
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+    import { getDatabase, set, ref, child, get } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCA9JIebv1y1A_-7DaNPwZykXloxDmvqAM",
+      authDomain: "fyp-video-connection.firebaseapp.com",
+      databaseURL:
+        "https://fyp-video-connection-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "fyp-video-connection",
+      storageBucket: "fyp-video-connection.appspot.com",
+      messagingSenderId: "407561155244",
+      appId: "1:407561155244:web:68c55c49b956b590076509",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+        // This is to allow using the Peer API
     let Peer = window.Peer;
 
     const peerId = sessionStorage.getItem("peerid");
@@ -67,7 +105,8 @@
       });
 
       navigator.mediaDevices
-        .getUserMedia({ video: true, audio: true })
+        .getUserMedia({ video: {
+        facingMode: 'environment'}, audio: true })
         .then((stream) => {
           let call = peer.call(peerId, stream);
           call.on("stream", renderVideo);
@@ -82,5 +121,22 @@
     peer.on("error", (error) => {
       console.error(error);
     });
+
+    /*
+    function disconnect() {
+      peer.on("disconnected", () => {
+        conn.send("Disconnected");
+        peer.destroy();
+        navigator.mediaDevices.close();
+      });
+    }*/
+
+    
+  } else {
+    // User is signed out
+    location.href="/login";
+  }
+});
+
   </script>
 </html>

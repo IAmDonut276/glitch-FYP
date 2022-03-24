@@ -15,7 +15,6 @@
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
-
   </head>
 
   <section class="hero is-fullheight">
@@ -41,12 +40,12 @@
               id="newPin"
               placeholder="Enter New Pin"
             />
-            
-            <p>Re-enter Pin</p>
+
+            <p>Confirm Pin</p>
             <input
               class="input is-fullwidth"
               type="password"
-              id="newPin2"
+              id="confirmPin"
               placeholder="Re-enter New Pin"
             />
 
@@ -58,7 +57,6 @@
             /><br />
 
             <a href="/connection">Connect to CCTV Here</a>
-
           </div>
         </div>
       </div>
@@ -68,8 +66,18 @@
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-    import { getDatabase, set, ref, child, get } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+    import {
+      getDatabase,
+      set,
+      ref,
+      child,
+      get,
+    } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signOut, onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -89,9 +97,8 @@
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
     const auth = getAuth();
-    const user = auth.currentUser;
-
-    logout.addEventListener("click", (e) => {
+    
+        logout.addEventListener("click", (e) => {
       signOut(auth)
         .then(() => {
           // Sign-out successful.
@@ -107,5 +114,46 @@
           alert(errorMessage);
         });
     });
+
+    const user = auth.currentUser;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+      change.addEventListener("click", (e) => {
+      let newPin = document.getElementById("newPin").value;
+      let confirm = document.getElementById("confirmPin").value;
+      console.log(" Password:", newPin, "\n", "Confirm Password:", confirm);
+
+      
+      if (newPin.length != 0) {
+        if (newPin == confirm) {
+          alert("Pin match");
+          set(ref(database, "users/" +uid), {
+            pin: newPin
+          })
+            .then(() => {
+              // Data saved successfully!
+              alert("Pin Changed!");
+            })
+            .catch((error) => {
+              // The write failed...
+              alert("Try Again");
+            });
+        } else {
+          alert("Pin does not match");
+        }
+      } else {
+        alert("Pin cannot be empty!");
+      }
+    });
+    
+  } else {
+    // User is signed out
+    location.href="/login";
+  }
+});
+    
   </script>
 </html>

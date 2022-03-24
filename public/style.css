@@ -112,20 +112,6 @@ a:hover {
   box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
-  margin: 2em 1em;
-  line-height: 1.5em;
-}
-
-form {
-  background-color: #eeeeee;
-  display: grid;
-  grid-gap: 1em;
-  padding: 1em;
-  max-width: 40ch;
-}
-
 input[type="text1"] {
   display: block;
   box-sizing: border-box;
@@ -219,4 +205,12 @@ input[id="exit"]:focus {
   opacity: 0.8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
+}
+
+/*video*/
+
+.container.is-primary.is-max-desktop.is-fluid {
+  margin: auto;
+  Background-color: #000000;
+  background-position: center;
 }
