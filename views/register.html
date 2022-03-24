@@ -112,6 +112,8 @@
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
+        
+          location.href="/connection";
 
           set(ref(database, "users/" + user.uid), {
             username: Username,
@@ -119,7 +121,7 @@
             pin: Pin,
           });
           
-          location.href="/connection";
+
           alert("User Added Succesfully!");
           // ...
         })
