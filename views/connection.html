@@ -120,10 +120,14 @@ onAuthStateChanged(auth, (user) => {
     
       connect.addEventListener("click", (e) => {
       var id = document.getElementById("connect-to-peer").value;
-      
+      var Pin = document.getElementById("pin").value;
+        
       sessionStorage.setItem('peerid', id);
+        
       location.href = "/video-connected";
       })
+    
+    
     
   } else {
     // User is signed out

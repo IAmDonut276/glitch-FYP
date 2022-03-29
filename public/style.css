@@ -158,6 +158,7 @@ input[id="change"]:focus {
 }
 
 /*video-connected.html*/
+
 input[id="sound"],
 input[id="disconnect"] {
   padding: 4px;
@@ -213,4 +214,8 @@ input[id="exit"]:focus {
   margin: auto;
   Background-color: #000000;
   background-position: center;
+  justify-content: center;
+}
+.hero-body.has-text-centered {
+  justify-content: center;
 }

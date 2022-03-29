@@ -30,7 +30,7 @@
               <video id="vid" class="remote-video" autoplay></video>
             </div>
  
-
+    <audio id="audio" src="https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/Quack%20Sound%20Effect.mp3?v=1648570499032"></audio>
             <input
               class="button is-primary is-responsive"
               type="button"
@@ -74,18 +74,19 @@
     const database = getDatabase(app);
     const auth = getAuth();
     const user = auth.currentUser;
-
+    
     onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
+
         // This is to allow using the Peer API
     let Peer = window.Peer;
 
     const peerId = sessionStorage.getItem("peerid");
     const videoEl = document.getElementById("vid");
-
+    
     let renderVideo = (stream) => {
       videoEl.srcObject = stream;
     };
@@ -121,7 +122,13 @@
     peer.on("error", (error) => {
       console.error(error);
     });
+    
+    sound.addEventListener("click", (e) => {
+        var audio = document.getElementById("audio");
+        audio.play();
+      });
 
+    
     /*
     function disconnect() {
       peer.on("disconnected", () => {
@@ -137,6 +144,8 @@
     location.href="/login";
   }
 });
+
+
 
   </script>
 </html>
