@@ -23,28 +23,22 @@
   <section class="hero is-fullheight">
     <div class="hero-body has-text-centered">
       <div>
-        
+        <div class="container is-primary is-max-desktop is-fluid">
+          <video id="vid" class="remote-video" autoplay></video>
+        </div>
 
-            <div class="container is-primary is-max-desktop is-fluid">
-
-              <video id="vid" class="remote-video" autoplay></video>
-            </div>
- 
-    <audio id="audio" src="https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/Quack%20Sound%20Effect.mp3?v=1648570499032"></audio>
-            <input
-              class="button is-primary is-responsive"
-              type="button"
-              id="sound"
-              value="Alarm"
-            />
-            <input
-              class="button is-danger is-responsive"
-              type="button"
-              id="disconnect"
-              onclick="disconnect()"
-              value="Disconnect"
-            />
-
+        <input
+          class="button is-primary is-responsive"
+          type="button"
+          id="sound"
+          value="Alarm"
+        />
+        <input
+          class="button is-danger is-responsive"
+          type="button"
+          id="disconnect"
+          value="Disconnect"
+        />
       </div>
     </div>
   </section>
@@ -52,8 +46,19 @@
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-    import { getDatabase, set, ref, child, get } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword, signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+    import {
+      getDatabase,
+      set,
+      ref,
+      child,
+      get,
+    } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged,
+    } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -74,78 +79,80 @@
     const database = getDatabase(app);
     const auth = getAuth();
     const user = auth.currentUser;
-    
+
     onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
 
         // This is to allow using the Peer API
-    let Peer = window.Peer;
+        let Peer = window.Peer;
 
-    const peerId = sessionStorage.getItem("peerid");
-    const videoEl = document.getElementById("vid");
-    
-    let renderVideo = (stream) => {
-      videoEl.srcObject = stream;
-    };
+        const peerId = sessionStorage.getItem("peerid");
+        const videoEl = document.getElementById("vid");
 
-    //register peer
-    let peer = new Peer("909090-connect", {
-      host: "/",
-      path: "/peerjs/myapp",
-    });
-    peer.on("open", (id) => {
-      console.log("My peer ID is: " + id);
-      console.log(`Connecting to ${peerId}...`);
+        let renderVideo = (stream) => {
+          videoEl.srcObject = stream;
+        };
 
-      let conn = peer.connect(peerId);
-      conn.on("data", (data) => {
-        console.log(`Received: ${data}`);
-      });
-
-      navigator.mediaDevices
-        .getUserMedia({ video: {
-        facingMode: 'environment'}, audio: true })
-        .then((stream) => {
-          let call = peer.call(peerId, stream);
-          call.on("stream", renderVideo);
-        })
-        .catch((err) => {
-          console.log("Failed to get local stream", err);
+        //register peer
+        let peer = new Peer("909090-connect", {
+          host: "/",
+          path: "/peerjs/myapp",
         });
-      conn.on("open", () => {
-        conn.send("Running..");
-      });
+
+        // 1. Declare a "conn" here, do not assign anything to it.
+        let conn;
+        peer.on("open", (id) => {
+          console.log("My peer ID is: " + id);
+          console.log(`Connecting to ${peerId}...`);
+
+          // We need this "conn" to be a variable outside of this scope.
+          // 2. get rid of the "let" here. You should do the "let" thing at 1.
+          conn = peer.connect(peerId);
+          conn.on("data", (data) => {
+            console.log(`Received: ${data}`);
+          });
+
+          navigator.mediaDevices
+            .getUserMedia({
+              video: {
+                facingMode: "environment",
+                width: { min: 640 },
+                height: { min: 480 },
+                frameRate: { min: 30 },
+              },
+              audio: true,
+            })
+            .then((stream) => {
+              let call = peer.call(peerId, stream);
+              call.on("stream", renderVideo);
+            })
+            .catch((err) => {
+              console.log("Failed to get local stream", err);
+            });
+          conn.on("open", () => {
+            conn.send("Running..");
+          });
+        });
+        peer.on("error", (error) => {
+          console.error(error);
+        });
+
+        sound.addEventListener("click", (e) => {
+          conn.send("play-sound");
+        });
+
+        const hangUpBtn = document.getElementById("disconnect");
+        hangUpBtn.addEventListener("click", function () {
+          conn.close();
+          location.href = "/connection";
+        });
+      } else {
+        // User is signed out
+        location.href = "/login";
+      }
     });
-    peer.on("error", (error) => {
-      console.error(error);
-    });
-    
-    sound.addEventListener("click", (e) => {
-        var audio = document.getElementById("audio");
-        audio.play();
-      });
-
-    
-    /*
-    function disconnect() {
-      peer.on("disconnected", () => {
-        conn.send("Disconnected");
-        peer.destroy();
-        navigator.mediaDevices.close();
-      });
-    }*/
-
-    
-  } else {
-    // User is signed out
-    location.href="/login";
-  }
-});
-
-
-
   </script>
 </html>

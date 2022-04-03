@@ -212,6 +212,8 @@ input[id="exit"]:focus {
 
 .container.is-primary.is-max-desktop.is-fluid {
   margin: auto;
+  width: 100%;
+  height: 100%;
   Background-color: #000000;
   background-position: center;
   justify-content: center;

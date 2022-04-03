@@ -48,8 +48,12 @@
               name="cctv-id"
               value="Set"
             /><br />
-            
+
             <div style="color: #000000" id="messages"></div>
+            <audio
+              id="audio"
+              src="https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/Quack%20Sound%20Effect.mp3?v=1648570499032"
+            ></audio>
           </div>
         </div>
       </div>
@@ -62,11 +66,13 @@
 
     set.addEventListener("click", (e) => {
       var customId = document.getElementById("set-id").value;
- 
-      let logMessage = function(message){
-        document.getElementById("messages").innerHTML= message;
-      }
-      
+
+      let logMessage = function (message) {
+        document.getElementById("messages").innerHTML = message;
+      };
+
+      let call;
+
       let peer = new Peer(customId, {
         host: "/",
         path: "/peerjs/myapp",
@@ -78,35 +84,53 @@
       peer.on("error", (error) => {
         console.error(error);
       });
-    
 
-    // Handle incoming data connection
-    peer.on("connection", (conn) => {
-      logMessage("Incoming peer connection!");
-      conn.on("data", (data) => {
-        logMessage(`Received: ${data}`);
-      });
-      conn.on("open", () => {
-        conn.send("Connected!");
-      });
-    });
+      // Handle incoming data connection
+      peer.on("connection", (conn) => {
+        logMessage("Incoming peer connection!");
 
-    // Handle incoming voice/video connection
-    peer.on("call", (call) => {
-      navigator.mediaDevices
-        .getUserMedia({ video: {
-        facingMode: 'environment'}, audio: true })
-        .then((stream) => {
-          call.answer(stream); // Answer the call with an A/V stream.
-        })
-        .catch((err) => {
-          console.error("Failed to get local stream", err);
+        conn.on("data", (data) => {
+          logMessage(`Received: ${data}`);
+          if (data == "play-sound") {
+            var audio = document.getElementById("audio");
+            audio.play();
+          }
         });
-    });
-});
-    
-    exit.addEventListener("click", (e) => {
-      location.href = "/home";
+        conn.on("open", () => {
+          conn.send("Connected!");
+        });
+
+        // listen to the conn.on("close") here.
+        conn.on("close", () => {
+          call.close();
+          logMessage("Disconnected");
+        });
+      });
+
+      // Handle incoming voice/video connection
+      peer.on("call", (event) => {
+        call = event;
+        navigator.mediaDevices
+          .getUserMedia({
+            video: {
+              facingMode: "environment",
+              width: { min: 640 },
+              height: { min: 480 },
+              frameRate: { min: 30 },
+            },
+            audio: true,
+          })
+          .then((stream) => {
+            call.answer(stream); // Answer the call with an A/V stream.
+          })
+          .catch((err) => {
+            console.error("Failed to get local stream", err);
+          });
+      });
+
+      exit.addEventListener("click", (e) => {
+        location.href = "/home";
+      });
     });
   </script>
 </html>
