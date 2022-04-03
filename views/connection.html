@@ -18,8 +18,7 @@
 
     <!-- import libraries -->
     <script src="/lib/peerjs.js"></script>
-
-</head>
+  </head>
 
   <section class="hero is-fullheight">
     <input
@@ -44,7 +43,7 @@
               id="connect-to-peer"
               placeholder="Enter CCTV ID"
             />
-            
+
             <p>Enter Pin</p>
             <input
               class="input is-fullwidth"
@@ -72,8 +71,19 @@
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-    import { getDatabase, set, ref, child, get } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword, signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+    import {
+      getDatabase,
+      set,
+      ref,
+      child,
+      get,
+    } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged,
+    } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -111,30 +121,35 @@
           alert(errorMessage);
         });
     });
-    
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    
-      connect.addEventListener("click", (e) => {
-      var id = document.getElementById("connect-to-peer").value;
-      var Pin = document.getElementById("pin").value;
-        
-      sessionStorage.setItem('peerid', id);
-        
-      location.href = "/video-connected";
-      })
-    
-    
-    
-  } else {
-    // User is signed out
-    location.href="/login";
-  }
-});
-    
 
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+
+        connect.addEventListener("click", (e) => {
+          var id = document.getElementById("connect-to-peer").value;
+
+          get(ref(database, "users/" + user.uid)).then((snapshot) => {
+            if (snapshot.exists()) {
+              let dbpin = snapshot.val().pin;
+              var Pin = document.getElementById("pin").value;
+              if (dbpin == Pin) {
+                sessionStorage.setItem("peerid", id);
+                location.href = "/video-connected";
+              } else {
+                alert("Pin incorrect");
+              }
+            } else {
+              alert("Pin does not exist!");
+            }
+          });
+        });
+      } else {
+        // User is signed out
+        location.href = "/login";
+      }
+    });
   </script>
 </html>
