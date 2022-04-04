@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/style.css" />
 
     <!-- import libraries -->
-    <!-- Replace this with: <script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js"></script> and try. -->
     <script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js"></script>
   </head>
 
@@ -103,14 +102,12 @@
           path: "/peerjs/myapp",
         });
 
-        // 1. Declare a "conn" here, do not assign anything to it.
         let conn;
         peer.on("open", (id) => {
           console.log("My peer ID is: " + id);
           console.log(`Connecting to ${peerId}...`);
 
-          // We need this "conn" to be a variable outside of this scope.
-          // 2. get rid of the "let" here. You should do the "let" thing at 1.
+
           conn = peer.connect(peerId);
           conn.on("data", (data) => {
             console.log(`Received: ${data}`);

@@ -8,11 +8,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    
-    <!-- This do not looks correct. your src should be inside the <script  src='...'>  not outside. See how you do this in video-connected.html -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
-    
     <title>Register</title>
 
     <!-- import the webpage's stylesheet -->
@@ -130,12 +128,12 @@
           // Signed in
           const user = userCredential.user;
 
-          //location.href = "/connection";
+          location.href = "/connection";
 
           set(ref(database, "users/" + user.uid), {
             username: Username,
             email: Email,
-            pin: encpin()
+            pin: encpin(Pin),
           });
 
           alert("User Added Succesfully!");
@@ -149,9 +147,9 @@
           // ..
         });
     });
-    
-    function encpin(){
-      var pin12 = CryptoJS.AES.encrypt(Pin.value,Pin.value);
+
+    function encpin(v) {
+      var pin12 = CryptoJS.AES.encrypt(v, v);
       return pin12.toString();
     }
 
