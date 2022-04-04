@@ -1,5 +1,6 @@
 dependencies:
   bulma: 0.9.3
+  crypto-js: 4.1.1
   express: 4.17.1
   peer: 0.5.3
 packages:
@@ -186,6 +187,10 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
+  /crypto-js/4.1.1:
+    dev: false
+    resolution:
+      integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -700,5 +705,6 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   bulma: ^0.9.3
+  crypto-js: ^4.1.1
   express: ^4.17.1
   peer: ^0.5.3

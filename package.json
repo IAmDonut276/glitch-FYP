@@ -12,7 +12,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "peer": "^0.5.3",
-    "bulma": "^0.9.3"
+    "bulma": "^0.9.3",
+    "crypto-js": "^4.1.1"
+
   },
   "engines": {
     "node": "12.x"
