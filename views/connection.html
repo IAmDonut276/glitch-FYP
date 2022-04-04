@@ -11,6 +11,8 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
     <title>Connection</title>
 
     <!-- import the webpage's stylesheet -->
@@ -130,13 +132,15 @@
 
         connect.addEventListener("click", (e) => {
           var id = document.getElementById("connect-to-peer").value;
+          var Pin = document.getElementById("pin").value;
 
           get(ref(database, "users/" + user.uid)).then((snapshot) => {
             if (snapshot.exists()) {
-              let dbpin = snapshot.val().pin;
-              var Pin = document.getElementById("pin").value;
+              let dbpin = decpin(snapshot.val().pin);
               if (dbpin == Pin) {
+                console.log(dbpin, Pin);
                 sessionStorage.setItem("peerid", id);
+                // Should just go to the next page here.
                 location.href = "/video-connected";
               } else {
                 alert("Pin incorrect");
@@ -145,6 +149,11 @@
               alert("Pin does not exist!");
             }
           });
+
+          function decpin(dbpin) {
+            var pin12 = CryptoJS.AES.decrypt(dbpin, Pin);
+            return pin12.toString(CryptoJS.enc.Utf8);
+          }
         });
       } else {
         // User is signed out
