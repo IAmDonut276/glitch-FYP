@@ -128,14 +128,15 @@
           // Signed in
           const user = userCredential.user;
 
-          location.href = "/connection";
-
           set(ref(database, "users/" + user.uid), {
             username: Username,
             email: Email,
             pin: encpin(Pin),
+          }).then(() => {
+            location.href = "/connection";
           });
 
+          // You should move this together with location.href = "/connection"
           alert("User Added Succesfully!");
           // ...
         })
