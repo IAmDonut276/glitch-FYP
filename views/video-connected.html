@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link id="favicon" rel="icon" href="https://cdn.glitch.global/badd33af-62bd-4fb7-8d82-187601d1d242/logo.jpg?v=1647716057183" type="image/x-icon">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,7 +12,7 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
 
-    <title>Connected</title>
+    <title>CONNECTED</title>
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
@@ -24,7 +25,7 @@
     <div class="hero-body has-text-centered">
       <div>
         <div class="container is-primary is-max-desktop is-fluid">
-          <video id="vid" class="remote-video" autoplay></video>
+          <video class="is-fluid remote-video" id="vid" autoplay></video>
         </div>
 
         <input
@@ -116,11 +117,10 @@
           navigator.mediaDevices
             .getUserMedia({
               video: {
-                facingMode: "environment",
-                width: { min: 640 },
-                height: { min: 480 },
-                frameRate: { min: 30 },
-              },
+               width: { max: 960 },
+              height: { max: 720 },
+              frameRate: { max: 60 },
+            },
               audio: true,
             })
             .then((stream) => {
